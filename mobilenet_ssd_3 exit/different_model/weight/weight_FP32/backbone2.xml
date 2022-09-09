@@ -1,0 +1,1041 @@
+<?xml version="1.0" ?>
+<net name="backbone2" version="10">
+	<layers>
+		<layer id="0" name="input" type="Parameter" version="opset1">
+			<data element_type="f32" shape="8, 96, 19, 19"/>
+			<output>
+				<port id="0" names="input" precision="FP32">
+					<dim>8</dim>
+					<dim>96</dim>
+					<dim>19</dim>
+					<dim>19</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="1" name="onnx::Conv_93" type="Const" version="opset1">
+			<data element_type="f32" offset="0" shape="576, 96, 1, 1" size="221184"/>
+			<output>
+				<port id="0" names="onnx::Conv_93" precision="FP32">
+					<dim>576</dim>
+					<dim>96</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="2" name="Conv_0/WithoutBiases" type="Convolution" version="opset1">
+			<data auto_pad="explicit" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" strides="1, 1"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>96</dim>
+					<dim>19</dim>
+					<dim>19</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>576</dim>
+					<dim>96</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" precision="FP32">
+					<dim>8</dim>
+					<dim>576</dim>
+					<dim>19</dim>
+					<dim>19</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="3" name="Conv_0/Dims603" type="Const" version="opset1">
+			<data element_type="f32" offset="221184" shape="1, 576, 1, 1" size="2304"/>
+			<output>
+				<port id="0" precision="FP32">
+					<dim>1</dim>
+					<dim>576</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="4" name="Conv_0" type="Add" version="opset1">
+			<data auto_broadcast="numpy"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>576</dim>
+					<dim>19</dim>
+					<dim>19</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>1</dim>
+					<dim>576</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" names="input.4" precision="FP32">
+					<dim>8</dim>
+					<dim>576</dim>
+					<dim>19</dim>
+					<dim>19</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="5" name="output2" type="Clamp" version="opset1">
+			<data max="6" min="0"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>576</dim>
+					<dim>19</dim>
+					<dim>19</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1" names="output2" precision="FP32">
+					<dim>8</dim>
+					<dim>576</dim>
+					<dim>19</dim>
+					<dim>19</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="6" name="output2/sink_port_0" type="Result" version="opset1">
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>576</dim>
+					<dim>19</dim>
+					<dim>19</dim>
+				</port>
+			</input>
+		</layer>
+		<layer id="7" name="onnx::Conv_96" type="Const" version="opset1">
+			<data element_type="f32" offset="223488" shape="576, 1, 1, 3, 3" size="20736"/>
+			<output>
+				<port id="0" names="onnx::Conv_96" precision="FP32">
+					<dim>576</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+					<dim>3</dim>
+					<dim>3</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="8" name="Conv_2/WithoutBiases" type="GroupConvolution" version="opset1">
+			<data auto_pad="explicit" dilations="1, 1" pads_begin="1, 1" pads_end="1, 1" strides="2, 2"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>576</dim>
+					<dim>19</dim>
+					<dim>19</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>576</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+					<dim>3</dim>
+					<dim>3</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" precision="FP32">
+					<dim>8</dim>
+					<dim>576</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="9" name="Conv_2/Dims609" type="Const" version="opset1">
+			<data element_type="f32" offset="244224" shape="1, 576, 1, 1" size="2304"/>
+			<output>
+				<port id="0" precision="FP32">
+					<dim>1</dim>
+					<dim>576</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="10" name="Conv_2" type="Add" version="opset1">
+			<data auto_broadcast="numpy"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>576</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>1</dim>
+					<dim>576</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" names="input.12" precision="FP32">
+					<dim>8</dim>
+					<dim>576</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="11" name="Clip_3" type="Clamp" version="opset1">
+			<data max="6" min="0"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>576</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1" names="onnx::Conv_68" precision="FP32">
+					<dim>8</dim>
+					<dim>576</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="12" name="onnx::Conv_99" type="Const" version="opset1">
+			<data element_type="f32" offset="246528" shape="160, 576, 1, 1" size="368640"/>
+			<output>
+				<port id="0" names="onnx::Conv_99" precision="FP32">
+					<dim>160</dim>
+					<dim>576</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="13" name="Conv_4/WithoutBiases" type="Convolution" version="opset1">
+			<data auto_pad="explicit" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" strides="1, 1"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>576</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>160</dim>
+					<dim>576</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="14" name="Conv_4/Dims615" type="Const" version="opset1">
+			<data element_type="f32" offset="615168" shape="1, 160, 1, 1" size="640"/>
+			<output>
+				<port id="0" precision="FP32">
+					<dim>1</dim>
+					<dim>160</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="15" name="Conv_4" type="Add" version="opset1">
+			<data auto_broadcast="numpy"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>1</dim>
+					<dim>160</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" names="input.20" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="16" name="onnx::Conv_102" type="Const" version="opset1">
+			<data element_type="f32" offset="615808" shape="960, 160, 1, 1" size="614400"/>
+			<output>
+				<port id="0" names="onnx::Conv_102" precision="FP32">
+					<dim>960</dim>
+					<dim>160</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="17" name="Conv_5/WithoutBiases" type="Convolution" version="opset1">
+			<data auto_pad="explicit" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" strides="1, 1"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>960</dim>
+					<dim>160</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="18" name="Conv_5/Dims639" type="Const" version="opset1">
+			<data element_type="f32" offset="1230208" shape="1, 960, 1, 1" size="3840"/>
+			<output>
+				<port id="0" precision="FP32">
+					<dim>1</dim>
+					<dim>960</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="19" name="Conv_5" type="Add" version="opset1">
+			<data auto_broadcast="numpy"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>1</dim>
+					<dim>960</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" names="input.28" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="20" name="Clip_6" type="Clamp" version="opset1">
+			<data max="6" min="0"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1" names="onnx::Conv_73" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="21" name="onnx::Conv_105" type="Const" version="opset1">
+			<data element_type="f32" offset="1234048" shape="960, 1, 1, 3, 3" size="34560"/>
+			<output>
+				<port id="0" names="onnx::Conv_105" precision="FP32">
+					<dim>960</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+					<dim>3</dim>
+					<dim>3</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="22" name="Conv_7/WithoutBiases" type="GroupConvolution" version="opset1">
+			<data auto_pad="explicit" dilations="1, 1" pads_begin="1, 1" pads_end="1, 1" strides="1, 1"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>960</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+					<dim>3</dim>
+					<dim>3</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="23" name="Conv_7/Dims657" type="Const" version="opset1">
+			<data element_type="f32" offset="1268608" shape="1, 960, 1, 1" size="3840"/>
+			<output>
+				<port id="0" precision="FP32">
+					<dim>1</dim>
+					<dim>960</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="24" name="Conv_7" type="Add" version="opset1">
+			<data auto_broadcast="numpy"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>1</dim>
+					<dim>960</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" names="input.36" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="25" name="Clip_8" type="Clamp" version="opset1">
+			<data max="6" min="0"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1" names="onnx::Conv_76" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="26" name="onnx::Conv_108" type="Const" version="opset1">
+			<data element_type="f32" offset="1272448" shape="160, 960, 1, 1" size="614400"/>
+			<output>
+				<port id="0" names="onnx::Conv_108" precision="FP32">
+					<dim>160</dim>
+					<dim>960</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="27" name="Conv_9/WithoutBiases" type="Convolution" version="opset1">
+			<data auto_pad="explicit" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" strides="1, 1"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>160</dim>
+					<dim>960</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="28" name="Conv_9/Dims627" type="Const" version="opset1">
+			<data element_type="f32" offset="1886848" shape="1, 160, 1, 1" size="640"/>
+			<output>
+				<port id="0" precision="FP32">
+					<dim>1</dim>
+					<dim>160</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="29" name="Conv_9" type="Add" version="opset1">
+			<data auto_broadcast="numpy"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>1</dim>
+					<dim>160</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" names="onnx::Add_107" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="30" name="Add_10" type="Add" version="opset1">
+			<data auto_broadcast="numpy"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" names="input.44" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="31" name="onnx::Conv_111" type="Const" version="opset1">
+			<data element_type="f32" offset="1887488" shape="960, 160, 1, 1" size="614400"/>
+			<output>
+				<port id="0" names="onnx::Conv_111" precision="FP32">
+					<dim>960</dim>
+					<dim>160</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="32" name="Conv_11/WithoutBiases" type="Convolution" version="opset1">
+			<data auto_pad="explicit" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" strides="1, 1"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>960</dim>
+					<dim>160</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="33" name="Conv_11/Dims645" type="Const" version="opset1">
+			<data element_type="f32" offset="2501888" shape="1, 960, 1, 1" size="3840"/>
+			<output>
+				<port id="0" precision="FP32">
+					<dim>1</dim>
+					<dim>960</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="34" name="Conv_11" type="Add" version="opset1">
+			<data auto_broadcast="numpy"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>1</dim>
+					<dim>960</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" names="input.52" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="35" name="Clip_12" type="Clamp" version="opset1">
+			<data max="6" min="0"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1" names="onnx::Conv_82" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="36" name="onnx::Conv_114" type="Const" version="opset1">
+			<data element_type="f32" offset="2505728" shape="960, 1, 1, 3, 3" size="34560"/>
+			<output>
+				<port id="0" names="onnx::Conv_114" precision="FP32">
+					<dim>960</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+					<dim>3</dim>
+					<dim>3</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="37" name="Conv_13/WithoutBiases" type="GroupConvolution" version="opset1">
+			<data auto_pad="explicit" dilations="1, 1" pads_begin="1, 1" pads_end="1, 1" strides="1, 1"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>960</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+					<dim>3</dim>
+					<dim>3</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="38" name="Conv_13/Dims633" type="Const" version="opset1">
+			<data element_type="f32" offset="2540288" shape="1, 960, 1, 1" size="3840"/>
+			<output>
+				<port id="0" precision="FP32">
+					<dim>1</dim>
+					<dim>960</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="39" name="Conv_13" type="Add" version="opset1">
+			<data auto_broadcast="numpy"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>1</dim>
+					<dim>960</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" names="input.60" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="40" name="Clip_14" type="Clamp" version="opset1">
+			<data max="6" min="0"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1" names="onnx::Conv_85" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="41" name="onnx::Conv_117" type="Const" version="opset1">
+			<data element_type="f32" offset="2544128" shape="160, 960, 1, 1" size="614400"/>
+			<output>
+				<port id="0" names="onnx::Conv_117" precision="FP32">
+					<dim>160</dim>
+					<dim>960</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="42" name="Conv_15/WithoutBiases" type="Convolution" version="opset1">
+			<data auto_pad="explicit" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" strides="1, 1"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>960</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>160</dim>
+					<dim>960</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="43" name="Conv_15/Dims621" type="Const" version="opset1">
+			<data element_type="f32" offset="3158528" shape="1, 160, 1, 1" size="640"/>
+			<output>
+				<port id="0" precision="FP32">
+					<dim>1</dim>
+					<dim>160</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="44" name="Conv_15" type="Add" version="opset1">
+			<data auto_broadcast="numpy"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>1</dim>
+					<dim>160</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" names="onnx::Add_116" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="45" name="Add_16" type="Add" version="opset1">
+			<data auto_broadcast="numpy"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" names="input.68" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="46" name="onnx::Conv_120" type="Const" version="opset1">
+			<data element_type="f32" offset="3159168" shape="160, 160, 1, 1" size="102400"/>
+			<output>
+				<port id="0" names="onnx::Conv_120" precision="FP32">
+					<dim>160</dim>
+					<dim>160</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="47" name="Conv_17/WithoutBiases" type="Convolution" version="opset1">
+			<data auto_pad="explicit" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" strides="1, 1"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>160</dim>
+					<dim>160</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="48" name="Conv_17/Dims651" type="Const" version="opset1">
+			<data element_type="f32" offset="3261568" shape="1, 160, 1, 1" size="640"/>
+			<output>
+				<port id="0" precision="FP32">
+					<dim>1</dim>
+					<dim>160</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="49" name="Conv_17" type="Add" version="opset1">
+			<data auto_broadcast="numpy"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+				<port id="1" precision="FP32">
+					<dim>1</dim>
+					<dim>160</dim>
+					<dim>1</dim>
+					<dim>1</dim>
+				</port>
+			</input>
+			<output>
+				<port id="2" names="input.76" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="50" name="output1" type="Clamp" version="opset1">
+			<data max="6" min="0"/>
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</input>
+			<output>
+				<port id="1" names="output1" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</output>
+		</layer>
+		<layer id="51" name="output1/sink_port_0" type="Result" version="opset1">
+			<input>
+				<port id="0" precision="FP32">
+					<dim>8</dim>
+					<dim>160</dim>
+					<dim>10</dim>
+					<dim>10</dim>
+				</port>
+			</input>
+		</layer>
+	</layers>
+	<edges>
+		<edge from-layer="0" from-port="0" to-layer="2" to-port="0"/>
+		<edge from-layer="1" from-port="0" to-layer="2" to-port="1"/>
+		<edge from-layer="2" from-port="2" to-layer="4" to-port="0"/>
+		<edge from-layer="3" from-port="0" to-layer="4" to-port="1"/>
+		<edge from-layer="4" from-port="2" to-layer="5" to-port="0"/>
+		<edge from-layer="5" from-port="1" to-layer="6" to-port="0"/>
+		<edge from-layer="5" from-port="1" to-layer="8" to-port="0"/>
+		<edge from-layer="7" from-port="0" to-layer="8" to-port="1"/>
+		<edge from-layer="8" from-port="2" to-layer="10" to-port="0"/>
+		<edge from-layer="9" from-port="0" to-layer="10" to-port="1"/>
+		<edge from-layer="10" from-port="2" to-layer="11" to-port="0"/>
+		<edge from-layer="11" from-port="1" to-layer="13" to-port="0"/>
+		<edge from-layer="12" from-port="0" to-layer="13" to-port="1"/>
+		<edge from-layer="13" from-port="2" to-layer="15" to-port="0"/>
+		<edge from-layer="14" from-port="0" to-layer="15" to-port="1"/>
+		<edge from-layer="15" from-port="2" to-layer="17" to-port="0"/>
+		<edge from-layer="15" from-port="2" to-layer="30" to-port="0"/>
+		<edge from-layer="16" from-port="0" to-layer="17" to-port="1"/>
+		<edge from-layer="17" from-port="2" to-layer="19" to-port="0"/>
+		<edge from-layer="18" from-port="0" to-layer="19" to-port="1"/>
+		<edge from-layer="19" from-port="2" to-layer="20" to-port="0"/>
+		<edge from-layer="20" from-port="1" to-layer="22" to-port="0"/>
+		<edge from-layer="21" from-port="0" to-layer="22" to-port="1"/>
+		<edge from-layer="22" from-port="2" to-layer="24" to-port="0"/>
+		<edge from-layer="23" from-port="0" to-layer="24" to-port="1"/>
+		<edge from-layer="24" from-port="2" to-layer="25" to-port="0"/>
+		<edge from-layer="25" from-port="1" to-layer="27" to-port="0"/>
+		<edge from-layer="26" from-port="0" to-layer="27" to-port="1"/>
+		<edge from-layer="27" from-port="2" to-layer="29" to-port="0"/>
+		<edge from-layer="28" from-port="0" to-layer="29" to-port="1"/>
+		<edge from-layer="29" from-port="2" to-layer="30" to-port="1"/>
+		<edge from-layer="30" from-port="2" to-layer="32" to-port="0"/>
+		<edge from-layer="30" from-port="2" to-layer="45" to-port="0"/>
+		<edge from-layer="31" from-port="0" to-layer="32" to-port="1"/>
+		<edge from-layer="32" from-port="2" to-layer="34" to-port="0"/>
+		<edge from-layer="33" from-port="0" to-layer="34" to-port="1"/>
+		<edge from-layer="34" from-port="2" to-layer="35" to-port="0"/>
+		<edge from-layer="35" from-port="1" to-layer="37" to-port="0"/>
+		<edge from-layer="36" from-port="0" to-layer="37" to-port="1"/>
+		<edge from-layer="37" from-port="2" to-layer="39" to-port="0"/>
+		<edge from-layer="38" from-port="0" to-layer="39" to-port="1"/>
+		<edge from-layer="39" from-port="2" to-layer="40" to-port="0"/>
+		<edge from-layer="40" from-port="1" to-layer="42" to-port="0"/>
+		<edge from-layer="41" from-port="0" to-layer="42" to-port="1"/>
+		<edge from-layer="42" from-port="2" to-layer="44" to-port="0"/>
+		<edge from-layer="43" from-port="0" to-layer="44" to-port="1"/>
+		<edge from-layer="44" from-port="2" to-layer="45" to-port="1"/>
+		<edge from-layer="45" from-port="2" to-layer="47" to-port="0"/>
+		<edge from-layer="46" from-port="0" to-layer="47" to-port="1"/>
+		<edge from-layer="47" from-port="2" to-layer="49" to-port="0"/>
+		<edge from-layer="48" from-port="0" to-layer="49" to-port="1"/>
+		<edge from-layer="49" from-port="2" to-layer="50" to-port="0"/>
+		<edge from-layer="50" from-port="1" to-layer="51" to-port="0"/>
+	</edges>
+	<meta_data>
+		<MO_version value="2021.4.2-3974-e2a469a3450-releases/2021/4"/>
+		<cli_parameters>
+			<caffe_parser_path value="DIR"/>
+			<data_type value="float"/>
+			<disable_nhwc_to_nchw value="False"/>
+			<disable_omitting_optional value="False"/>
+			<disable_resnet_optimization value="False"/>
+			<disable_weights_compression value="False"/>
+			<enable_concat_optimization value="False"/>
+			<enable_flattening_nested_params value="False"/>
+			<enable_ssd_gluoncv value="False"/>
+			<extensions value="DIR"/>
+			<framework value="onnx"/>
+			<freeze_placeholder_with_value value="{}"/>
+			<generate_deprecated_IR_V7 value="False"/>
+			<input_model value="DIR\backbone2.onnx"/>
+			<input_model_is_text value="False"/>
+			<k value="DIR\CustomLayersMapping.xml"/>
+			<keep_shape_ops value="True"/>
+			<legacy_ir_generation value="False"/>
+			<legacy_mxnet_model value="False"/>
+			<log_level value="ERROR"/>
+			<mean_scale_values value="{}"/>
+			<mean_values value="()"/>
+			<model_name value="backbone2"/>
+			<output_dir value="DIR"/>
+			<placeholder_data_types value="{}"/>
+			<progress value="False"/>
+			<remove_memory value="False"/>
+			<remove_output_softmax value="False"/>
+			<reverse_input_channels value="False"/>
+			<save_params_from_nd value="False"/>
+			<scale_values value="()"/>
+			<silent value="False"/>
+			<static_shape value="False"/>
+			<stream_output value="False"/>
+			<transform value=""/>
+			<unset unset_cli_parameters="batch, counts, disable_fusing, disable_gfusing, finegrain_fusing, input, input_checkpoint, input_meta_graph, input_proto, input_shape, input_symbol, mean_file, mean_file_offsets, move_to_preprocess, nd_prefix_name, output, placeholder_shapes, pretrained_model_name, saved_model_dir, saved_model_tags, scale, tensorboard_logdir, tensorflow_custom_layer_libraries, tensorflow_custom_operations_config_update, tensorflow_object_detection_api_pipeline_config, tensorflow_use_custom_operations_config, transformations_config"/>
+		</cli_parameters>
+	</meta_data>
+</net>
